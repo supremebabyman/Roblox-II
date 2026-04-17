@@ -1,8 +1,17 @@
+const path = require("path");
 const express = require("express");
 const app = express();
 
 app.use(express.json());
 
+/* =========================
+   STATIC FRONTEND
+========================= */
+app.use(express.static(path.join(__dirname)));
+
+/* =========================
+   API ROUTES
+========================= */
 app.post("/api/auth", async (req, res) => {
   try {
     const response = await fetch("https://now.gg/api/user/v2/auth?locale=en", {
@@ -15,9 +24,7 @@ app.post("/api/auth", async (req, res) => {
 
     const data = await response.json();
 
-    // IMPORTANT: CORS header so frontend can read it
     res.setHeader("Access-Control-Allow-Origin", "*");
-
     res.json(data);
 
   } catch (err) {
@@ -25,6 +32,10 @@ app.post("/api/auth", async (req, res) => {
     res.status(500).json({ error: "auth proxy failed" });
   }
 });
+
+/* =========================
+   START SERVER
+========================= */
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
