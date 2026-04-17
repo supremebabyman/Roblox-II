@@ -211,12 +211,12 @@
         }
  
         window.sessionId = userUuid;
-        window[`${window.gameId}-auth`] = fetch(url, {
-          method: "Post",
+        window[`${window.gameId}-auth`] = fetch("/api/auth", {
+          method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(data)
         });
       }
       // Check that service workers are supported
