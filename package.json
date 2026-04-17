@@ -1,0 +1,17 @@
+{
+  "name": "roblox-ii",
+  "version": "1.0.0",
+  "description": "Web app with backend proxy for API handling",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.3",
+    "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
