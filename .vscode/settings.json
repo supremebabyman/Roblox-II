@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /workspaces/Roblox-II && python3 - <<'PY'\nimport re, sys\ntext=open\\('index\\.html','r',encoding='utf-8'\\)\\.read\\(\\)\nstyle = re\\.search\\(r'<style>\\(\\.\\*\\?\\)</style>', text, flags=re\\.S\\)\nif not style:\n    print\\('no style'\\)\n    sys\\.exit\\(1\\)\ncss=style\\.group\\(1\\)\nfor m in re\\.finditer\\(r'\\(\\[\\\\\\{;\\]\\)\\(\\[\\^;\\\\\\{\\\\\\}\\]\\+\\?\\)\\(\\?=\\[;\\\\\\}\\]\\)', css\\):\n    decl = m\\.group\\(2\\)\\.strip\\(\\)\n    if decl and ':' not in decl:\n        print\\('malformed declaration:', repr\\(decl\\)\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
