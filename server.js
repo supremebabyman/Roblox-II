@@ -17,18 +17,21 @@ app.post("/api/auth", async (req, res) => {
     const response = await fetch("https://now.gg/api/user/v2/auth?locale=en", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0"
       },
       body: JSON.stringify(req.body)
     });
 
-    const data = await response.json();
+    const text = await response.text();
 
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.json(data);
+    res.setHeader("Content-Type", "application/json");
+
+    res.status(response.status).send(text);
 
   } catch (err) {
-    console.error(err);
+    console.error("AUTH ERROR:", err);
     res.status(500).json({ error: "auth proxy failed" });
   }
 });
